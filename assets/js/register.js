@@ -9,6 +9,7 @@ export default () => ({
     passwordVisible: false,
     confirmPasswordVisible: false,
     errors: {},
+    loading: false,
 
     togglePassword() {
         this.passwordVisible = !this.passwordVisible;
@@ -40,6 +41,7 @@ export default () => ({
                         username: this.username,
                         email: this.email,
                         password: this.password,
+                        confirm_password: this.confirm_password,
                     }),
                 }
             );

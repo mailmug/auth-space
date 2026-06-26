@@ -64,14 +64,14 @@ class AuthSpace_Register{
                 if ( strlen( $value ) < 3 ) {
                     return [
                         'valid'   => false,
-                        'message' => 'Username must be at least 3 characters.',
+                        'message' => _e('Username must be at least 3 characters.', 'auth-space'),
                     ];
                 }
 
                 if ( username_exists( $value ) ) {
                     return [
                         'valid'   => false,
-                        'message' => 'Username already exists.',
+                        'message' => _e('Username already exists.', 'auth-space'),
                     ];
                 }
 
@@ -83,14 +83,14 @@ class AuthSpace_Register{
                 if ( ! is_email( $value ) ) {
                     return [
                         'valid'   => false,
-                        'message' => 'Invalid email address.',
+                        'message' => _e('Invalid email address.', 'auth-space')
                     ];
                 }
 
                 if ( email_exists( $value ) ) {
                     return [
                         'valid'   => false,
-                        'message' => 'Email already exists.',
+                        'message' => _e('Email already exists.', 'auth-space'),
                     ];
                 }
 
@@ -100,7 +100,7 @@ class AuthSpace_Register{
                 if ( strlen( $value ) < 6 ) {
                     return [
                         'valid'   => false,
-                        'message' => 'Password must be at least 6 characters.',
+                        'message' => _e('Password must be at least 6 characters.', 'auth-space'),
                     ];
                 }
 
@@ -113,7 +113,7 @@ class AuthSpace_Register{
                 if ( $confirm_password !== $password ) {
                     return [
                         'valid'   => false,
-                        'message' => 'Passwords do not match.',
+                        'message' => _e('Passwords do not match.', 'auth-space'),
                     ];
                 }
 
@@ -139,6 +139,7 @@ class AuthSpace_Register{
         $username = sanitize_user( $request->get_param('username') );
         $email    = sanitize_email( $request->get_param('email') );
         $password = (string) $request->get_param('password');
+        $confirm_password = (string) $request->get_param('confirm_password');
 
         $errors = [];
 
@@ -146,25 +147,27 @@ class AuthSpace_Register{
         if ( empty($username) ) {
             $errors['username'] = 'Username is required.';
         } elseif ( strlen($username) < 3 ) {
-            $errors['username'] = 'Username must be at least 3 characters.';
+            $errors['username'] = __('Username must be at least 3 characters.', 'auth-space');
         } elseif ( username_exists($username) ) {
             $errors['username'] = 'Username already exists.';
         }
 
         // Email validation
         if ( empty($email) ) {
-            $errors['email'] = 'Email is required.';
+            $errors['email'] = __('Email is required.', 'auth-space');
         } elseif ( ! is_email($email) ) {
-            $errors['email'] = 'Invalid email address.';
+            $errors['email'] = __('Invalid email address.', 'auth-space');
         } elseif ( email_exists($email) ) {
-            $errors['email'] = 'Email already exists.';
+            $errors['email'] = __('Email already exists.', 'auth-space');
         }
 
         // Password validation
         if ( empty($password) ) {
-            $errors['password'] = 'Password is required.';
+            $errors['password'] = __('Password is required.', 'auth-space');
         } elseif ( strlen($password) < 6 ) {
-            $errors['password'] = 'Password must be at least 6 characters.';
+            $errors['password'] = __('Password must be at least 6 characters.', 'auth-space');
+        }else if($confirm_password != $password){
+            $errors['confirm_password'] = __('Passwords do not match.', 'auth-space');
         }
 
         // If errors exist, return early
@@ -175,6 +178,8 @@ class AuthSpace_Register{
             ]);
         }
 
+        do_action('auth_space_before_register', $username, $password, $email);
+
         // Create user
         $user_id = wp_create_user($username, $password, $email);
 
@@ -184,6 +189,8 @@ class AuthSpace_Register{
                 'message' => $user_id->get_error_message(),
             ], 400);
         }
+
+        do_action('auth_space_after_register', $user_id, $username, $password, $email);
 
         return [
             'success'  => true,

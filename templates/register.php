@@ -112,12 +112,23 @@
             <!-- Submit Button -->
             <button 
                 type="submit"
+                :disabled="loading"
                 class="w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white
                     hover:bg-blue-700 active:bg-blue-800
                     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                     transition-colors duration-200"
             >
-                <?php _e('Register', 'auth-space') ?>
+                <span x-show="!loading">
+                    <?php _e('Register', 'auth-space') ?>
+                </span>
+
+                <span x-show="loading" class="flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                    </svg>
+                    <?php _e('Loading...', 'auth-space') ?>
+                </span>
             </button>
         </form>
 
