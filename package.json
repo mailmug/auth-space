@@ -1,0 +1,23 @@
+{
+  "name": "auth-space",
+  "version": "1.0.0",
+  "description": "WordPress authentication plugin",
+  "license": "GPL-2.0-or-later",
+  "author": "WPDebugLog",
+  "main": "assets/js/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js",
+    "format": "wp-scripts format"
+  },
+  "dependencies": {
+    "alpinejs": "^3.15.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.1",
+    "@wordpress/scripts": "^ 32.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1"
+  }
+}

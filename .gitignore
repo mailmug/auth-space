@@ -1,48 +1,51 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+# Dependencies
+node_modules/
+vendor/
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+# Build files
+dist/
+build/
+assets/build/
 
-# Configuration
-wp-config.php
+# Composer
+composer.lock
 
-# Example themes
-/wp-content/themes/twenty*/
+# NPM
+package-lock.json
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
 
-# Example plugin
-/wp-content/plugins/hello.php
+# IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
 
-# Uploads
-/wp-content/uploads/
+# OS files
+.DS_Store
+Thumbs.db
 
-# Log files
+# Logs
 *.log
 
-# htaccess
-/.htaccess
+# Environment files
+.env
+.env.*
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+# PHPUnit
+.phpunit.result.cache
 
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# Coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# WordPress
+wp-config.php
+
+# Archive files
+*.zip
