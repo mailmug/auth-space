@@ -20,6 +20,7 @@ class AuthSpace_Assets {
             AUTHSPACE_URL . 'assets/build/index.js',
             $asset['dependencies'],
             $asset['version'],
+            ['in_footer' => true]
         );
 
         wp_register_style(
@@ -27,6 +28,15 @@ class AuthSpace_Assets {
             AUTHSPACE_URL . 'assets/build/style-index.css',
             array(),
             $asset['version']
+        );
+
+        wp_localize_script(
+            'auth-space',
+            'authSpace',
+            [
+                'restUrl' => rest_url(),
+                'nonce'   => wp_create_nonce( 'wp_rest' ),
+            ]
         );
 
         do_action('authspace_after_enqueue_scripts', $asset);
