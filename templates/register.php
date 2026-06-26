@@ -11,7 +11,7 @@
             <p class="text-sm text-gray-500 mt-1"><?php _e('Get started with your free account', 'auth-space') ?></p>
         </div>
 
-        <form method="post" action="" class="space-y-5">
+        <form method="post" novalidate @submit.prevent="submitRegisterForm" action="" class="space-y-5">
             <!-- Username -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
