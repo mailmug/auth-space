@@ -1,13 +1,13 @@
 # AuthSpace
 
-**Contributors:** wpdebuglog
-**Tags:** login, registration, authentication, user-management, security
-**Requires at least:** 6.5
-**Tested up to:** 6.8
-**Requires PHP:** 7.4
-**Stable Tag:** 1.0.0
-**License:** GPL-2.0-or-later
-**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
+*Contributors: wpdebuglog
+*Tags: login, registration, authentication, user-management, security
+*Requires at least: 6.5
+*Tested up to: 6.8
+*Requires PHP: 7.4
+*Stable Tag: 1.0.0
+*License: GPL-2.0-or-later
+*License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
 
@@ -19,14 +19,14 @@ Whether you're building a membership site, SaaS application, community, or custo
 
 ### Why Choose AuthSpace?
 
-✅ Modern AJAX registration and login forms
-✅ Real-time username and email validation
-✅ Fast and lightweight architecture
-✅ Extensible hooks and filters for developers
-✅ REST API powered
-✅ Built with modern JavaScript and Alpine.js
-✅ Clean, developer-friendly codebase
-✅ Translation ready
+- Modern AJAX registration and login forms
+- Real-time username and email validation
+- Fast and lightweight architecture
+- Extensible hooks and filters for developers
+- REST API powered
+- Built with modern JavaScript and Alpine.js
+- Clean, developer-friendly codebase
+- Translation ready
 
 ### Perfect For
 
