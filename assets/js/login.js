@@ -2,11 +2,8 @@ import { apiRequest } from './api-request';
 
 export default () => ({
     username: '',
-    email: '',
     password:'',
-    confirm_password:'',
     passwordVisible: false,
-    confirmPasswordVisible: false,
     errors: {},
     loading: false,
 
@@ -14,16 +11,11 @@ export default () => ({
         this.passwordVisible = !this.passwordVisible;
     },
 
-    toggleConfirmPassword() {
-        this.confirmPasswordVisible =
-            !this.confirmPasswordVisible;
-    },
-
     hasErrors() {
         return Object.values(this.errors).some(error => error);
     },
 
-    async submitRegisterForm(){
+    async submitLoginForm(){
       
         if (this.hasErrors()) {
             return;
@@ -33,20 +25,17 @@ export default () => ({
 
         try {
             const response = await apiRequest(
-                '/auth-space/v1/register',
+                '/auth-space/v1/login',
                 {
                     method: 'POST',
                     body: JSON.stringify({
                         username: this.username,
-                        email: this.email,
                         password: this.password,
-                        confirm_password: this.confirm_password,
                     }),
                 }
             );
 
             if (response.success) {
-                // redirect or show success
                 window.location.href = response.redirect;
                 return;
             }
@@ -67,28 +56,10 @@ export default () => ({
 
     },
 
-    async validateInput(field) {
-        try {
-            const value = this[`${field}`];
-       
-            const response = await apiRequest(
-                '/auth-space/v1/register/validate',
-                {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        field,
-                        value,
-                        password: this.password,
-                        confirm_password: this.confirm_password,
-                    }),
-                }
-            );
-
-            this.errors[field] = response.valid
-                ? ''
-                : response.message;
-        } catch (e) {
-            this.errors[field] = e.message;
-        }
+    validateInput(field) {
+        const value = this[`${field}`];
+        delete this.errors[field];
+        delete this.errors['general'];
     }
+
 });

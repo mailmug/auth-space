@@ -1,5 +1,5 @@
 <?php defined( 'ABSPATH' ) || exit; ?>
-<div asx-data="authSpaceRegisterForm()" class="min-h-screen flex items-center justify-center bg-white p-4">
+<div asx-data="authSpaceRegisterForm" class="min-h-screen flex items-center justify-center bg-white p-4">
     <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
         <!-- Header with icon -->
         <div class="text-center mb-8">
@@ -113,9 +113,10 @@
             <!-- Submit Button -->
             <button 
                 type="submit"
-                :disabled="loading"
+                asx-bind:disabled="loading || hasErrors()"
                 class="w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white
                     hover:bg-blue-700 active:bg-blue-800
+                    disabled:opacity-75 disabled:cursor-not-allowed disabled:bg-blue-500
                     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                     transition-colors duration-200"
             >
@@ -124,12 +125,13 @@
                 </span>
 
                 <span asx-show="loading" class="flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                    <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"/>
+                        <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z"/>
                     </svg>
-                    <?php esc_html_e('Loading...', 'auth-space') ?>
+                    <?php esc_html_e( 'Creating account...', 'auth-space' ); ?>
                 </span>
+
             </button>
         </form>
 

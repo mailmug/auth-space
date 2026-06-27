@@ -1,5 +1,4 @@
 # AuthSpace
-Modern AJAX-powered login and registration forms for WordPress with real-time validation and developer-friendly APIs.
 
 - Contributors: wpdebuglog
 - Tags: login, registration, authentication, user-management, security
@@ -9,6 +8,7 @@ Modern AJAX-powered login and registration forms for WordPress with real-time va
 - Stable Tag: 1.0.0
 - License: GPL-2.0-or-later
 - License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
 
 ## Description
 

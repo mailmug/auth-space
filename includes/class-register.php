@@ -9,7 +9,7 @@ class AuthSpace_Register{
     }
 
     public function init() {
-        add_shortcode( 'authspace_login', array( __CLASS__, 'render' ) );
+        add_shortcode( 'authspace_register', array( __CLASS__, 'render' ) );
         add_action( 'rest_api_init', [ $this, 'register_routes' ] );
     }
 
