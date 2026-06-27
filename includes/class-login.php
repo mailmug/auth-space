@@ -48,8 +48,17 @@ class AuthSpace_Login {
         $username = sanitize_text_field( $request->get_param( 'username' ));
         $password = (string) $request->get_param( 'password' );
         $remember = (bool) $request->get_param( 'remember' );
-
         $errors = [];
+
+        $spam = apply_filters( 'auth_space_is_spam', false );
+        if( $spam ){
+            return new WP_REST_Response(
+                [
+                    'success' => false,
+                    'message' => $spam,
+                ],
+            );
+        }
 
         if ( empty( $username ) ) {
             $errors['username'] = __( 'Username or email is required.', 'auth-space' );

@@ -21,17 +21,20 @@ export default () => ({
             return;
         }
 
+        let data = {
+            username: this.username,
+            password: this.password,
+        };
+
         this.loading = true;
+        this.$dispatch('auth-space:login:data', data);
 
         try {
             const response = await apiRequest(
                 '/auth-space/v1/login',
                 {
                     method: 'POST',
-                    body: JSON.stringify({
-                        username: this.username,
-                        password: this.password,
-                    }),
+                    body: JSON.stringify(data),
                 }
             );
 

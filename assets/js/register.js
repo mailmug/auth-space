@@ -31,17 +31,21 @@ export default () => ({
 
         this.loading = true;
 
+        let data = {
+            username: this.username,
+            email: this.email,
+            password: this.password,
+            confirm_password: this.confirm_password
+        };
+
+        this.$dispatch('auth-space:register:data', data);
+
         try {
             const response = await apiRequest(
                 '/auth-space/v1/register',
                 {
                     method: 'POST',
-                    body: JSON.stringify({
-                        username: this.username,
-                        email: this.email,
-                        password: this.password,
-                        confirm_password: this.confirm_password,
-                    }),
+                    body: JSON.stringify(data),
                 }
             );
 
