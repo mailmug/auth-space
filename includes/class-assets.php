@@ -30,14 +30,15 @@ class AuthSpace_Assets {
             $asset['version']
         );
 
-        wp_localize_script(
-            'auth-space',
-            'authSpace',
+        $localize_data = apply_filters( 
+            'auth_space_localize_data', 
             [
                 'restUrl' => rest_url(),
                 'nonce'   => wp_create_nonce( 'wp_rest' ),
             ]
         );
+
+        wp_localize_script( 'auth-space', 'authSpace', $localize_data );
 
         do_action('authspace_after_enqueue_scripts', $asset);
          

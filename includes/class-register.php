@@ -16,6 +16,7 @@ class AuthSpace_Register{
 
     public static function render( $atts = array() ) {
 
+      
         wp_enqueue_script( 'auth-space' );
         wp_enqueue_style( 'auth-space' );
 
@@ -64,14 +65,14 @@ class AuthSpace_Register{
                 if ( strlen( $value ) < 3 ) {
                     return [
                         'valid'   => false,
-                        'message' => _e('Username must be at least 3 characters.', 'auth-space'),
+                        'message' => __('Username must be at least 3 characters.', 'auth-space'),
                     ];
                 }
 
                 if ( username_exists( $value ) ) {
                     return [
                         'valid'   => false,
-                        'message' => _e('Username already exists.', 'auth-space'),
+                        'message' => __('Username already exists.', 'auth-space'),
                     ];
                 }
 
@@ -83,14 +84,14 @@ class AuthSpace_Register{
                 if ( ! is_email( $value ) ) {
                     return [
                         'valid'   => false,
-                        'message' => _e('Invalid email address.', 'auth-space')
+                        'message' => __('Invalid email address.', 'auth-space')
                     ];
                 }
 
                 if ( email_exists( $value ) ) {
                     return [
                         'valid'   => false,
-                        'message' => _e('Email already exists.', 'auth-space'),
+                        'message' => __('Email already exists.', 'auth-space'),
                     ];
                 }
 
@@ -100,7 +101,7 @@ class AuthSpace_Register{
                 if ( strlen( $value ) < 6 ) {
                     return [
                         'valid'   => false,
-                        'message' => _e('Password must be at least 6 characters.', 'auth-space'),
+                        'message' => __('Password must be at least 6 characters.', 'auth-space'),
                     ];
                 }
 
@@ -113,7 +114,7 @@ class AuthSpace_Register{
                 if ( $confirm_password !== $password ) {
                     return [
                         'valid'   => false,
-                        'message' => _e('Passwords do not match.', 'auth-space'),
+                        'message' => __('Passwords do not match.', 'auth-space'),
                     ];
                 }
 
@@ -179,6 +180,15 @@ class AuthSpace_Register{
         }
 
         do_action('auth_space_before_register', $username, $password, $email);
+
+        $spam = apply_filters('auth_space_is_spam', false);
+
+        if($spam){
+            return new WP_REST_Response([
+                'success' => false,
+                'message' => $spam,
+            ]);
+        }
 
         // Create user
         $user_id = wp_create_user($username, $password, $email);

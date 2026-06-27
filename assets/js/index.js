@@ -1,8 +1,10 @@
-import Alpine from 'alpinejs';
 import '../css/style.css';
+
+import Alpine from 'alpinejs';
 import registerForm from './register';
 
-window.Alpine = Alpine;
-Alpine.data('registerForm', registerForm);
-
+Alpine.prefix("asx-");
+Alpine.data('authSpaceRegisterForm', registerForm);
 Alpine.start();
+
+

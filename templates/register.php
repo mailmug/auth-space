@@ -1,4 +1,4 @@
-<div x-data="registerForm" class="min-h-screen flex items-center justify-center bg-white p-4">
+<div asx-data="authSpaceRegisterForm()" class="min-h-screen flex items-center justify-center bg-white p-4">
     <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
         <!-- Header with icon -->
         <div class="text-center mb-8">
@@ -11,14 +11,14 @@
             <p class="text-sm text-gray-500 mt-1"><?php _e('Get started with your free account', 'auth-space') ?></p>
         </div>
 
-        <form method="post" novalidate @submit.prevent="submitRegisterForm" action="" class="space-y-5">
+        <form method="post" novalidate asx-on:submit.prevent="submitRegisterForm" action="" class="space-y-5">
             <!-- Username -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
                     <?php _e('Username', 'auth-space') ?>
                 </label>
-                <input type="text" x-model="username" name="username" autocomplete="username" placeholder="Enter your username"
-                    @input.debounce.500ms="validateInput('username')"
+                <input type="text" asx-model="username" name="username" autocomplete="username" placeholder="Enter your username"
+                    asx-on:input.debounce.500ms="validateInput('username')"
                     :class="errors.username
                         ? 'border-red-500 focus:ring-red-500'
                         : 'border-gray-300 focus:ring-blue-500'"
@@ -28,9 +28,9 @@
                     required
                 >
                 <p
-                    x-show="errors.username"
-                    x-text="errors.username"
-                    x-transition
+                    asx-show="errors.username"
+                    asx-text="errors.username"
+                    asx-transition
                     class="mt-1 text-sm text-red-600"
                 ></p>
             </div>
@@ -42,11 +42,11 @@
                 </label>
                 <input
                     type="email"
-                    x-model="email"
+                    asx-model="email"
                     name="email"
                     autocomplete="email"
                     placeholder="you@example.com"
-                    @input.debounce.500ms="validateInput('email')"
+                    asx-on:input.debounce.500ms="validateInput('email')"
                     :class="errors.email
                         ? 'border-red-500 focus:ring-red-500'
                         : 'border-gray-300 focus:ring-blue-500'"
@@ -56,9 +56,9 @@
                     required
                 >
                 <p
-                    x-show="errors.email"
-                    x-text="errors.email"
-                    x-transition
+                    asx-show="errors.email"
+                    asx-text="errors.email"
+                    asx-transition
                     class="mt-1 text-sm text-red-600"
                 ></p>
             </div>
@@ -68,8 +68,8 @@
                 <label class="block text-sm font-medium text-gray-700 mb-1">
                     <?php _e('Password', 'auth-space') ?>
                 </label>
-                <input type="password" x-model="password" name="password" placeholder="••••••••" autocomplete="new-password"
-                    @input.debounce.500ms="validateInput('password')"
+                <input type="password" asx-model="password" name="password" placeholder="••••••••" autocomplete="new-password"
+                    asx-on:input.debounce.500ms="validateInput('password')"
                     :class="errors.password
                         ? 'border-red-500 focus:ring-red-500'
                         : 'border-gray-300 focus:ring-blue-500'"
@@ -79,9 +79,9 @@
                     required
                 >
                 <p
-                    x-show="errors.password"
-                    x-text="errors.password"
-                    x-transition
+                    asx-show="errors.password"
+                    asx-text="errors.password"
+                    asx-transition
                     class="mt-1 text-sm text-red-600"
                 ></p>
             </div>
@@ -91,8 +91,8 @@
                 <label class="block text-sm font-medium text-gray-700 mb-1">
                     <?php _e('Confirm Password', 'auth-space') ?>
                 </label>
-                <input type="password" x-model="confirm_password" name="confirm_password" placeholder="••••••••" autocomplete="new-password"
-                    @input.debounce.500ms="validateInput('confirm_password')"
+                <input type="password" asx-model="confirm_password" name="confirm_password" placeholder="••••••••" autocomplete="new-password"
+                    asx-on:input.debounce.500ms="validateInput('confirm_password')"
                     :class="errors.confirm_password
                         ? 'border-red-500 focus:ring-red-500'
                         : 'border-gray-300 focus:ring-blue-500'"
@@ -102,9 +102,9 @@
                     required
                 >
                 <p
-                    x-show="errors.confirm_password"
-                    x-text="errors.confirm_password"
-                    x-transition
+                    asx-show="errors.confirm_password"
+                    asx-text="errors.confirm_password"
+                    asx-transition
                     class="mt-1 text-sm text-red-600"
                 ></p>
             </div>
@@ -118,11 +118,11 @@
                     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                     transition-colors duration-200"
             >
-                <span x-show="!loading">
+                <span asx-show="!loading">
                     <?php _e('Register', 'auth-space') ?>
                 </span>
 
-                <span x-show="loading" class="flex items-center justify-center gap-2">
+                <span asx-show="loading" class="flex items-center justify-center gap-2">
                     <svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>

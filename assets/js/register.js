@@ -1,7 +1,7 @@
 import { apiRequest } from './api-request';
+import captcha from './captcha';
 
 export default () => ({
-
     username: '',
     email: '',
     password:'',
