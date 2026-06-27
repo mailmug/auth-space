@@ -1,3 +1,4 @@
+<?php defined( 'ABSPATH' ) || exit; ?>
 <div asx-data="authSpaceRegisterForm()" class="min-h-screen flex items-center justify-center bg-white p-4">
     <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
         <!-- Header with icon -->
@@ -7,15 +8,15 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                 </svg>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900"><?php _e('Create Account', 'auth-space') ?></h2>
-            <p class="text-sm text-gray-500 mt-1"><?php _e('Get started with your free account', 'auth-space') ?></p>
+            <h2 class="text-2xl font-bold text-gray-900"><?php esc_html_e('Create Account', 'auth-space') ?></h2>
+            <p class="text-sm text-gray-500 mt-1"><?php esc_html_e('Get started with your free account', 'auth-space') ?></p>
         </div>
 
         <form method="post" novalidate asx-on:submit.prevent="submitRegisterForm" action="" class="space-y-5">
             <!-- Username -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
-                    <?php _e('Username', 'auth-space') ?>
+                    <?php esc_html_e('Username', 'auth-space') ?>
                 </label>
                 <input type="text" asx-model="username" name="username" autocomplete="username" placeholder="Enter your username"
                     asx-on:input.debounce.500ms="validateInput('username')"
@@ -38,7 +39,7 @@
             <!-- Email -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
-                    <?php _e('Email', 'auth-space') ?>
+                    <?php esc_html_e('Email', 'auth-space') ?>
                 </label>
                 <input
                     type="email"
@@ -66,7 +67,7 @@
             <!-- Password -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
-                    <?php _e('Password', 'auth-space') ?>
+                    <?php esc_html_e('Password', 'auth-space') ?>
                 </label>
                 <input type="password" asx-model="password" name="password" placeholder="••••••••" autocomplete="new-password"
                     asx-on:input.debounce.500ms="validateInput('password')"
@@ -89,7 +90,7 @@
             <!-- Confirm Password -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
-                    <?php _e('Confirm Password', 'auth-space') ?>
+                    <?php esc_html_e('Confirm Password', 'auth-space') ?>
                 </label>
                 <input type="password" asx-model="confirm_password" name="confirm_password" placeholder="••••••••" autocomplete="new-password"
                     asx-on:input.debounce.500ms="validateInput('confirm_password')"
@@ -119,7 +120,7 @@
                     transition-colors duration-200"
             >
                 <span asx-show="!loading">
-                    <?php _e('Register', 'auth-space') ?>
+                    <?php esc_html_e('Register', 'auth-space') ?>
                 </span>
 
                 <span asx-show="loading" class="flex items-center justify-center gap-2">
@@ -127,16 +128,16 @@
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                     </svg>
-                    <?php _e('Loading...', 'auth-space') ?>
+                    <?php esc_html_e('Loading...', 'auth-space') ?>
                 </span>
             </button>
         </form>
 
         <!-- Optional footer link -->
         <p class="text-sm text-center text-gray-500 mt-6">
-            <?php _e('Already have an account?', 'auth-space') ?>
+            <?php esc_html_e('Already have an account?', 'auth-space') ?>
             <a href="#" class="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">
-                <?php _e('Sign in', 'auth-space') ?>
+                <?php esc_html_e('Sign in', 'auth-space') ?>
             </a>
         </p>
     </div>
