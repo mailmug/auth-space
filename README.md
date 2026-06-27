@@ -1,13 +1,13 @@
 # AuthSpace
 
-*Contributors: wpdebuglog
-*Tags: login, registration, authentication, user-management, security
-*Requires at least: 6.5
-*Tested up to: 6.8
-*Requires PHP: 7.4
-*Stable Tag: 1.0.0
-*License: GPL-2.0-or-later
-*License URI: https://www.gnu.org/licenses/gpl-2.0.html
+- Contributors: wpdebuglog
+- Tags: login, registration, authentication, user-management, security
+- Requires at least: 6.5
+- Tested up to: 6.8
+- Requires PHP: 7.4
+- Stable Tag: 1.0.0
+- License: GPL-2.0-or-later
+- License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
 
