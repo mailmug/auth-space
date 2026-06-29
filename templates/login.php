@@ -101,7 +101,7 @@
 
             <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
+                class="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200 "
             >
                 <?php esc_html_e( 'Create one', 'auth-space' ); ?>
             </a>

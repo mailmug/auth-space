@@ -35,6 +35,7 @@ class AuthSpace_Assets {
             [
                 'restUrl' => rest_url(),
                 'nonce'   => wp_create_nonce( 'wp_rest' ),
+                'forgotPassUrl' => home_url( 'forgot-password' )
             ]
         );
 

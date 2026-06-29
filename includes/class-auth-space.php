@@ -28,6 +28,8 @@ class AuthSpace {
         include_once AUTHSPACE_ABSPATH . 'includes/class-login.php';
         include_once AUTHSPACE_ABSPATH . 'includes/class-register.php';
         include_once AUTHSPACE_ABSPATH . 'includes/class-assets.php';
+        include_once AUTHSPACE_ABSPATH . 'includes/class-forgot-password.php';
+        include_once AUTHSPACE_ABSPATH . 'includes/class-reset-password.php';
 
     }
 
@@ -36,6 +38,8 @@ class AuthSpace {
             AuthSpace_Login::class,
             AuthSpace_Register::class,
             AuthSpace_Assets::class,
+            AuthSpace_Forgot_Password::class,
+            AuthSpace_Reset_Password::class
         ];
     }
 

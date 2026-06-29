@@ -1,0 +1,79 @@
+<?php
+
+defined( 'ABSPATH' ) || exit;
+
+class AuthSpace_Reset_Password {
+
+    public function __construct() {
+        $this->init();
+    }
+
+    public function init() {
+        add_shortcode( 'authspace_reset_password', [ __CLASS__, 'render' ]);
+        add_action( 'rest_api_init', [ $this, 'register_routes' ]);
+    }
+
+    public static function render( $atts = [] ) {
+
+        if(empty($_GET['login']) || empty($_GET['key'])){
+            wp_redirect( home_url('/reset-password'));
+            die;
+        }
+        wp_enqueue_script( 'auth-space' );
+        wp_enqueue_style( 'auth-space' );
+
+        ob_start();
+
+        $template = get_stylesheet_directory() . '/auth-space/reset-password.php';
+
+        if ( file_exists( $template ) ) {
+            include $template;
+        } else {
+            include AUTHSPACE_ABSPATH . 'templates/reset-password.php';
+        }
+
+        return ob_get_clean();
+    }
+
+    public function register_routes() {
+        register_rest_route(
+            'auth-space/v1',
+            '/reset-password',
+            [
+                'methods'  => 'POST',
+                'callback' => [ $this, 'reset_password' ],
+                'permission_callback' => '__return_true',
+            ]
+        );
+    }
+
+
+    public function reset_password( WP_REST_Request $request) {
+        
+        $login    = sanitize_text_field( $request->get_param( 'login' ));
+        $key      = sanitize_text_field( $request->get_param( 'key' ));
+        $password = $request->get_param( 'password');
+
+        $user = check_password_reset_key( $key, $login );
+
+        if ( is_wp_error( $user ) ) {
+            return [
+                'success' => false,
+                'message' => __(
+                    'The password reset link is invalid or has expired.',
+                    'auth-space'
+                ),
+            ];
+        }
+
+        reset_password( $user, $password );
+
+        return [
+            'success' => true,
+            'message' => __(
+                'Your password has been reset successfully.',
+                'auth-space'
+            ),
+        ];
+    }
+}
