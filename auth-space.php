@@ -18,10 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'AUTHSPACE_VERSION', '1.0.0');
 define( 'AUTHSPACE_ABSPATH', plugin_dir_path( __FILE__ ) );
 define( 'AUTHSPACE_URL', plugin_dir_url( __FILE__ ) );
-define( 'AUTHSPACE_VERSION', '1.0.0');
+define( 'AUTHSPACE_FILE', __FILE__ );
 
-require_once plugin_dir_path( __FILE__ ) . '/includes/class-auth-space.php';
+require_once AUTHSPACE_ABSPATH . 'includes/class-auth-space.php';
 
 AuthSpace::instance();

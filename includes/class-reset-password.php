@@ -66,6 +66,13 @@ class AuthSpace_Reset_Password {
             ];
         }
 
+        if ( strlen( $password ) < 6 ) {
+            return [
+                'success'   => false,
+                'message' => __('Password must be at least 6 characters.', 'auth-space'),
+            ];
+        }
+
         reset_password( $user, $password );
 
         return [
