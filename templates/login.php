@@ -24,7 +24,7 @@
                     <?php esc_html_e('Username', 'auth-space') ?>
                 </label>
                 <input type="text" asx-model="username" name="username" autocomplete="username" placeholder="Enter your username"
-                    asx-on:input.debounce.300ms="validateInput('username')"
+                    asx-on:input.debounce.250ms="validateInput('username')"
                     :class="errors.username
                         ? 'border-red-500 focus:ring-red-500'
                         : 'border-gray-300 focus:ring-blue-500'"
@@ -47,7 +47,7 @@
                     <?php esc_html_e('Password', 'auth-space') ?>
                 </label>
                 <input type="password" asx-model="password" name="password" placeholder="••••••••" autocomplete="new-password"
-                    asx-on:input.debounce.300ms="validateInput('password')"
+                    asx-on:input.debounce.250ms="validateInput('password')"
                     :class="errors.password
                         ? 'border-red-500 focus:ring-red-500'
                         : 'border-gray-300 focus:ring-blue-500'"
