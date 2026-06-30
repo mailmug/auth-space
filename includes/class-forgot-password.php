@@ -97,6 +97,7 @@ class AuthSpace_Forgot_Password {
             $user->user_email,
             __( 'Password Reset', 'auth-space' ),
             sprintf(
+                /* translators: %s: Password reset URL. */
                 __(
                     'Click here to reset your password: %s',
                     'auth-space'

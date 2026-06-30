@@ -39,7 +39,7 @@
                 autocomplete="username"
                 class="hidden"
                 aria-hidden="true"
-                asx-init="login = '<?php echo esc_js($_GET['login'] ?? ''); ?>'"
+                asx-init="login = '<?php echo esc_js( $login ?? '' ); ?>'"
             />
 
             <input
@@ -47,7 +47,7 @@
                 asx-model="key"
                 class="hidden"
                 aria-hidden="true"
-                asx-init="key = '<?php echo esc_js($_GET['key'] ?? ''); ?>'"
+                asx-init="key = '<?php echo esc_js($key ?? ''); ?>'"
             />
 
             <!-- New Password -->

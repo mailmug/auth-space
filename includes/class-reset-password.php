@@ -15,10 +15,17 @@ class AuthSpace_Reset_Password {
 
     public static function render( $atts = [] ) {
 
-        if(empty($_GET['login']) || empty($_GET['key'])){
-            wp_redirect( home_url('/reset-password'));
-            die;
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Password reset token is validated      
+        $login = isset( $_GET['login'] ) ? sanitize_text_field( wp_unslash( $_GET['login'] ) ) : '';
+        
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended      
+        $key   = isset( $_GET['key'] ) ? sanitize_text_field( wp_unslash( $_GET['key'] ) ) : '';
+
+        if ( empty( $login ) || empty( $key ) ) {
+            wp_safe_redirect( home_url( '/reset-password' ) );
+            exit;
         }
+      
         wp_enqueue_script( 'auth-space' );
         wp_enqueue_style( 'auth-space' );
 
