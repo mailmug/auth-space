@@ -34,7 +34,7 @@ class AuthSpace {
         include_once AUTHSPACE_ABSPATH . 'includes/class-forgot-password.php';
         include_once AUTHSPACE_ABSPATH . 'includes/class-reset-password.php';
         include_once AUTHSPACE_ABSPATH . 'includes/class-plugin-activator.php';
-        include_once AUTHSPACE_ABSPATH . 'includes/class-admin-settings.php';
+        include_once AUTHSPACE_ABSPATH . 'includes/admin/class-settings.php';
     }
 
     private function get_features() {
